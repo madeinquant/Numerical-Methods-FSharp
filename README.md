@@ -1,1 +1,1 @@
-Numerical-Methods-F#
+Numerical Methods in F#
