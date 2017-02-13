@@ -21,11 +21,12 @@ let rec euler1 f l y0 =
 euler1 f1 x y;;
 
 // Second Order ODE
-let f2 x y y1:float = (sin y*x) - y1;;  // utility function
+let f2 x y y1:float = sin (x*y) - y1;;  // utility function
 
 let rec euler2 f l y0 y01=
     match l with
     | x::rest -> euler2 f rest (y0 + (h*y01)) (y1+(h*(f x y0 y01)))
     | _  -> y0;;
 
+euler1 f1 x y;;
 euler2 f2 x y y1;;
