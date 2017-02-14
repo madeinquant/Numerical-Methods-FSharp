@@ -15,7 +15,7 @@ let f1 x y:float = cos x + sin y;;  // utility function
 
 let rec euler1 f l y0 =
     match l with
-    | x::rest -> euler1 f rest (y0 + (h*(f x y0)))
+    | x::rest -> euler1 f rest (y0 + (h*(f x  y0)))
     | _  -> y0;;
 
 euler1 f1 x y;;
@@ -30,3 +30,19 @@ let rec euler2 f l y0 y01=
 
 euler1 f1 x y;;
 euler2 f2 x y y1;;
+
+// Midpoint Method (Cauchy Method)
+let xa = 2.0;;
+let xb = 5.0;;
+let n = 10.0;;
+let h = (xb-xa)/n;;
+let x = [xa..h..xb];;  
+
+let f x:float  = 1.0/(x*x);;  // utility function
+
+let rec cauchy f l y0=
+    match l with 
+    | x0::x1::rest -> cauchy f (x1::rest) (y0 + (h*f((x0+x1)*0.5)))
+    | _ -> y0;;
+
+cauchy f x 0.0;;
